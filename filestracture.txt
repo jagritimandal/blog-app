@@ -1,0 +1,59 @@
+blog-app/
+├── client/                     # Frontend (React or Next.js)
+│   ├── public/                 # Static assets (images, icons)
+│   ├── src/
+│   │   ├── components/         # Reusable UI components
+│   │   ├── pages/              # Routes/pages (Next.js) or Views (React Router)
+│   │   ├── styles/             # CSS / SCSS / Tailwind
+│   │   ├── hooks/              # Custom React hooks
+│   │   ├── context/            # React Context API
+│   │   ├── utils/              # Helper functions
+│   │   ├── services/           # API services (e.g., axios functions)
+│   │   └── App.js / index.js
+|   |   ├── __tests__/                 # Frontend unit tests
+│   │   │   ├── PostCard.test.jsx
+│   │   │   └── CommentBox.test.jsx
+│   │   └── setupTests.js             # React Testing Library setup
+│   └── cypress/                      # Cypress end-to-end tests
+│   |   ├── e2e/
+│   |    │   └── post.spec.cy.js
+│   |    └── support/
+│   └── package.json
+
+├── server/                     # Backend (Node.js + Express)
+│   ├── config/                 # DB and environment config
+│   │   └── db.js
+│   ├── controllers/            # Business logic for each route
+│   │   ├── postController.js
+│   │   ├── userController.js
+│   │   └── commentController.js
+│   ├── models/                 # Mongoose schemas
+│   │   ├── Post.js
+│   │   ├── User.js
+│   │   ├── Comment.js
+│   │   ├── Category.js
+│   │   └── Notification.js
+│   ├── routes/                 # API endpoints
+│   │   ├── postRoutes.js
+│   │   ├── userRoutes.js
+│   │   ├── commentRoutes.js
+│   │   └── authRoutes.js
+|   ├── tests/                        # Backend unit/integration tests
+│   │   ├── post.test.js
+│   │   ├── user.test.js
+│   │   └── setup.js                 # Global test setup (e.g. DB mocking)
+│   └── jest.config.js               # Jest configuration
+│   ├── middlewares/           # Custom middleware (auth, error handling)
+│   │   ├── authMiddleware.js
+│   │   └── errorHandler.js
+│   ├── utils/                  # Utility functions (JWT, email, etc.)
+│   ├── jobs/                   # Background jobs (e.g., email notifications)
+│   ├── app.js                  # Main Express app
+│   └── server.js               # Server startup file
+
+├── .env                        # Environment variables
+├── .gitignore
+├── README.md
+├── package.json                # Backend package file
+└── docker-compose.yml          # Optional: for running MongoDB + app
+
