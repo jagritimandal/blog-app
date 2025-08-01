@@ -1,0 +1,30 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "A modern full-stack blog application built with **MongoDB**, **Express**, and **React**/**Next.js**. Features include post creation, comments, authentication, categories, tags, and media uploads.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jagritimandal/blog-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jagritimandal/blog-app/issues"
+  },
+  "homepage": "https://github.com/jagritimandal/blog-app#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-linkedin-oauth2": "^2.0.0",
+    "slugify": "^1.6.6"
+  }
+}

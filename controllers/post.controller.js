@@ -17,7 +17,7 @@ const PostController = {
     getPostById: async (req, res) => {
         try {
             const postId = req.params.id;
-            const foundPost = await post.viewSinglePost(postId);
+            const foundPost = await post.getPostById(postId);
             return res.status(200).json(foundPost);
         } catch (err) {
             return res.status(500).json({ message: err.message });
