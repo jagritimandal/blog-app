@@ -82,6 +82,7 @@ const MediaService = {
             throw new Error(err.message);
         }
     },
+
     getAllMedia: async () => {
         try {
             return await media.find({});
@@ -89,90 +90,18 @@ const MediaService = {
             throw new Error(err.message);
         }
     },
-    getMediaByUploader: async (uploaderId) => {
+    getMediaByUser: async (userId) => {
         try {
-            return await media.find({ uploaderId });
+            const userMedia = await media.find({ userId });
+            return userMedia;
         } catch (err) {
             throw new Error(err.message);
         }
     },
-    getMediaByCategory: async (categoryId) => {
+    getMediaByPostId: async (postId) => {
         try {
-            return await media.find({ categoryId });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaByType: async (type) => {
-        try {
-            return await media.find({ type });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaByDateRange: async (startDate, endDate) => {
-        try {
-            return await media.find({
-                createdAt: {
-                    $gte: new Date(startDate),
-                    $lte: new Date(endDate)
-                }
-            });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaByTags: async (tags) => {
-        try {
-            return await media.find({ tags: { $in: tags } });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaBySearch: async (searchTerm) => {
-        try {
-            const regex = new RegExp(searchTerm, 'i');
-            return await media.find({ title: regex });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaByPopularity: async () => {
-        try {
-            return await media.find({}).sort({ likes: -1 });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaByRating: async (rating) => {
-        try {
-            return await media.find({ rating: { $gte: rating } });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaByDuration: async (minDuration, maxDuration) => {
-        try {
-            return await media.find({
-                duration: {
-                    $gte: minDuration,
-                    $lte: maxDuration
-                }
-            });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaByResolution: async (resolution) => {
-        try {
-            return await media.find({ resolution });
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
-    getMediaByUploaderAndCategory: async (uploaderId, categoryId) => {
-        try {
-            return await media.find({ uploaderId, categoryId });
+            const mediaList = await media.find({ postId });
+            return mediaList;
         } catch (err) {
             throw new Error(err.message);
         }

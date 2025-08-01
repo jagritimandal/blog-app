@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const UserService = {
   register: async (userData) => {
-    const { email, password } = userData;
+      const { email, password } = userData;
     const existingUser = await User.findOne({ email });
     if (existingUser) throw new Error('User already exists');
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -13,7 +13,7 @@ const UserService = {
   },
 
   login: async (email, password) => {
-    const user = await User.findOne({ email });
+      const user = await User.findOne({ email });
     if (!user) throw new Error('User not found');
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) throw new Error('Invalid password');
@@ -62,6 +62,7 @@ const UserService = {
   },
 
   getAllUsers: async () => {
+
     return await User.find();
   },
 

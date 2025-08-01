@@ -80,6 +80,18 @@ const auditLogController = {
             console.error('Error clearing audit logs:', error);
             return res.status(500).json({ message: 'Internal server error' });
         }
+    },
+    getAuditLogById : async (req, res) => {
+        try {
+            const auditLog = await auditLogService.getAuditLogById(req.params.id);
+            if (!auditLog) {
+                return res.status(404).json({ message: 'Audit log not found' });
+            }
+            return res.status(200).json(auditLog);
+        } catch (error) {
+            console.error('Error fetching audit log by ID:', error);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
     }
-}
+};
 module.exports = auditLogController;
