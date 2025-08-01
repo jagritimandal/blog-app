@@ -14,6 +14,36 @@ const UserController = {
             return res.status(500).json({ message: err.message });
         }
     },
+    login : async (req, res) => {
+        try {
+            const { error } = Validation.loginUserValidation(req.body);
+            if (error) {
+                return res.status(400).json({ message: error.details[0].message });
+            }
+            const loggedInUser = await user.login(req.body);
+            return res.status(200).json(loggedInUser);
+        } catch (err) {
+            return res.status(500).json({ message: err.message });
+        }
+    },
+    loginWithProvider : async (req, res) => {
+        try {
+            const { provider, accessToken } = req.body;
+            const user = await user.loginWithProvider(provider, accessToken);
+            return res.status(200).json(user);
+        } catch (err) {
+            return res.status(500).json({ message: err.message });
+        }
+    },
+    logout: async (req, res) => {
+        try {
+            const userId = req.params.id;
+            const loggedOutUser = await user.logout(userId);
+            return res.status(200).json(loggedOutUser);
+        } catch (err) {
+            return res.status(500).json({ message: err.message });
+        }
+    },
     getUserById: async (req, res) => {
         try {
             const userId = req.params.id;
@@ -49,27 +79,6 @@ const UserController = {
         try {
             const allUsers = await user.getAllUsers();
             return res.status(200).json(allUsers);
-        } catch (err) {
-            return res.status(500).json({ message: err.message });
-        }
-    },
-    loginUser: async (req, res) => {
-        try {
-            const { error } = Validation.loginUserValidation(req.body);
-            if (error) {
-                return res.status(400).json({ message: error.details[0].message });
-            }
-            const loggedInUser = await user.login(req.body);
-            return res.status(200).json(loggedInUser);
-        } catch (err) {
-            return res.status(500).json({ message: err.message });
-        }
-    },
-    logoutUser: async (req, res) => {
-        try {
-            const userId = req.params.id;
-            const loggedOutUser = await user.logout(userId);
-            return res.status(200).json(loggedOutUser);
         } catch (err) {
             return res.status(500).json({ message: err.message });
         }

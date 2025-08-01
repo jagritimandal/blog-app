@@ -63,17 +63,6 @@ const NotificationService = {
             throw new Error(err.message);
         }
     },
-    getNotificationById: async (notificationId) => {
-        try {
-            const notificationItem = await notification.findById(notificationId);
-            if (!notificationItem) {
-                throw new Error('Notification not found');
-            }
-            return notificationItem;
-        } catch (err) {
-            throw new Error(err.message);
-        }
-    },
     updateNotification: async (notificationId, updateData) => {
         try {
             const updatedNotification = await notification.findByIdAndUpdate(notificationId, updateData, { new: true });
